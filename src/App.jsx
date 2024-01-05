@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Button from './components/button/Button';
+import Square from './components/square/Square';
 
 const App = () => {
 	const [counter, setCounter] = useState(0);
+	const [color, setColor] = useState('red');
 
 	return (
 		<>
@@ -20,6 +22,8 @@ const App = () => {
 				text={'-1'}
 				onClickFunction={() => handleClickSubtract(counter, setCounter)}
 			/>
+
+			<Square color={color} action={() => handleClickColor( setColor)} />
 		</>
 	);
 };
@@ -33,6 +37,12 @@ const handleClickReset = setCounter => {
 
 const handleClickSubtract = (counter, setCounter) => {
 	setCounter(counter - 1);
+};
+
+const handleClickColor = (setColor) => {
+	setColor('blue');
+	console.log('blue')
+
 };
 
 export default App;
