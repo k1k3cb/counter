@@ -4,7 +4,7 @@ import Square from './components/square/Square';
 
 const App = () => {
 	const [counter, setCounter] = useState(0);
-	const [color, setColor] = useState('red');
+	const [isGreen, setIsGreen] = useState(false);
 
 	return (
 		<>
@@ -23,7 +23,10 @@ const App = () => {
 				onClickFunction={() => handleClickSubtract(counter, setCounter)}
 			/>
 
-			<Square color={color} action={() => handleClickColor( setColor)} />
+			<Square
+				color={isGreen ? 'green' : 'red'}
+				action={() => handleClickColor(isGreen,setIsGreen)}
+			/>
 		</>
 	);
 };
@@ -39,10 +42,9 @@ const handleClickSubtract = (counter, setCounter) => {
 	setCounter(counter - 1);
 };
 
-const handleClickColor = (setColor) => {
-	setColor('blue');
-	console.log('blue')
-
+const handleClickColor = (isGreen, setIsGreen) => {
+	setIsGreen(!isGreen);
+	// console.log('green')
 };
 
 export default App;
